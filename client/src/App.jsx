@@ -2,8 +2,9 @@ import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./pages/Homepage.jsx";
 import SinglePost from "./pages/SinglePost.jsx";
-import CreatePost from "./pages/CreatePost.jsx";
+import Write from "./pages/Write.jsx";
 import DashboardLayout from "./components/DashboardLayout.jsx";
+import EditPost from "./pages/EditPost.jsx";
 
 const router = createBrowserRouter([
   {
@@ -19,9 +20,13 @@ const router = createBrowserRouter([
         element: <SinglePost />,
       },
       {
-        path: "create",
-        element: <CreatePost />,
+        path: "write",
+        element: <Write />,
       },
+      // {
+      //   path: "edit",
+      //   element: <EditPost />,
+      // },
     ],
   },
 ]);
