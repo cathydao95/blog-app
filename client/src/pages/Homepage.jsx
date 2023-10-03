@@ -20,9 +20,9 @@ const Homepage = () => {
   useEffect(() => {
     getPosts();
   }, []);
+
   return (
     <div>
-      <h1>lol</h1>
       <div className="postsContainer">
         {posts.map((post) => (
           <PostInfo key={post.id} post={post} />
