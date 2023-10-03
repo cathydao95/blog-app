@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Link, Outlet } from "react-router-dom";
 
 const DashboardLayout = () => {
   return (
@@ -10,7 +10,12 @@ const DashboardLayout = () => {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/create">Create Post</NavLink>
+            <Link
+              to="/write"
+              state={{ data: { title: "", content: "", isEditing: false } }}
+            >
+              Create New Post
+            </Link>
           </li>
         </ul>
       </nav>
