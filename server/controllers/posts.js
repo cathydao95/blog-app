@@ -34,15 +34,15 @@ export const getSinglePost = async (req, res) => {
 
 export const createPost = async (req, res) => {
   try {
-    const { title, content, author } = req.body;
+    const { title, content, img } = req.body;
 
-    const { rows: newPost } = await db.query(
-      "INSERT INTO posts (title, content, author) VALUES ($1, $2, $3) RETURNING *",
-      [title, content, author]
+    const { rows: post } = await db.query(
+      "INSERT INTO posts (title, content, img) VALUES ($1, $2, $3) RETURNING *",
+      [title, content, img]
     );
     res.status(200).json({
       status: "success",
-      data: { newPost },
+      data: { post },
     });
   } catch (error) {
     console.log(error);
@@ -53,15 +53,15 @@ export const createPost = async (req, res) => {
 export const editPost = async (req, res) => {
   try {
     const { id } = req.params;
-    const { title, content, author } = req.body;
+    const { title, content, img } = req.body;
 
-    const { rows: updatedPost } = await db.query(
-      "UPDATE posts SET (title, content, author) = ($1, $2, $3) WHERE id = $4 RETURNING *",
-      [title, content, author, id]
+    const { rows: post } = await db.query(
+      "UPDATE posts SET (title, content, img) = ($1, $2, $3) WHERE id = $4 RETURNING *",
+      [title, content, img, id]
     );
     res.status(200).json({
       status: "success",
-      data: { updatedPost },
+      data: { post },
     });
   } catch (error) {
     return res.status(500).json({ error: "Internal server error" });
