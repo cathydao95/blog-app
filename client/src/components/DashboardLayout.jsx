@@ -1,23 +1,17 @@
 import React from "react";
-import { NavLink, Link, Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
+import { VscDiffAdded } from "react-icons/vsc";
 
 const DashboardLayout = () => {
   return (
     <div>
-      <nav>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <Link
-              to="/write"
-              state={{ data: { title: "", content: "", isEditing: false } }}
-            >
-              Create New Post
-            </Link>
-          </li>
-        </ul>
+      <nav className="navBar">
+        <Link className="blogTitle" to="/">
+          Cathy's Blog
+        </Link>
+        <Link to="/write">
+          <VscDiffAdded className="addBtn" />
+        </Link>
       </nav>
       <Outlet />
     </div>
