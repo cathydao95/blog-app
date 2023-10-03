@@ -1,0 +1,23 @@
+.postsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+}
+
+.post {
+  display: flex;
+  gap: 100px;
+}
+
+.post:nth-child(2n + 1) {
+  flex-direction: row-reverse;
+}
+
+.imgContainer {
+  width: 100px;
+  background-color: red;
+}
+
+.img::after {
+  /* ADD BACKGROUND IMG CONTAINER */
+}
