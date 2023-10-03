@@ -15,9 +15,21 @@ app.use(cors());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-const upload = multer({ dest: "uploads/" });
-app.post("/upload", upload.single("file"), (req, res, next) => {
-  res.status(200).json("Image has been uploaded");
+// Get .png on image uploads
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, "../client/public/uploads");
+  },
+  filename: function (req, file, cb) {
+    cb(null, Date.now() + file.originalname);
+  },
+});
+
+const upload = multer({ storage: storage });
+
+app.post("/api/v1/upload", upload.single("file"), (req, res, next) => {
+  const file = req.file;
+  res.status(200).json(file.filename);
 });
 
 // routes
