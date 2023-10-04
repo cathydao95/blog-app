@@ -10,7 +10,6 @@ const Homepage = () => {
       const {
         data: { posts },
       } = await response.json();
-      console.log(posts);
       setPosts(posts);
     } catch (error) {
       console.error(error);
