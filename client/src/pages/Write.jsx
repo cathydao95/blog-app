@@ -12,13 +12,10 @@ const Write = () => {
   const [value, setValue] = useState(state?.content || "");
   const [file, setFile] = useState(null);
 
-  console.log("state", state);
-  console.log(file);
   const uploadImage = async () => {
     try {
       const formData = new FormData();
       formData.append("file", file);
-      console.log(formData);
       const response = await fetch("http://localhost:8080/api/v1/upload", {
         method: "POST",
         body: formData,
@@ -36,7 +33,6 @@ const Write = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const imgUrl = await uploadImage();
-    console.log(imgUrl);
     try {
       let response;
       state
@@ -91,6 +87,7 @@ const Write = () => {
           placeholder="title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
+          required
         />
         <div className="fileUpload">
           <label htmlFor="file">Upload Image</label>
@@ -107,6 +104,7 @@ const Write = () => {
             theme="snow"
             value={value}
             onChange={setValue}
+            required
           />
         </div>
         <button
