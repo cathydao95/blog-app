@@ -1,3 +1,4 @@
+<<<<<<< i1
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
@@ -28,3 +29,6 @@
    npm install
    ```
 3. Connect DB
+=======
+
+>>>>>>> main
