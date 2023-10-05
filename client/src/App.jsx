@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from "./pages/Homepage.jsx";
+import Posts from "./pages/Posts.jsx";
 import SinglePost from "./pages/SinglePost.jsx";
 import Write from "./pages/Write.jsx";
 import DashboardLayout from "./components/DashboardLayout.jsx";
@@ -12,7 +12,7 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Homepage />,
+        element: <Posts />,
       },
       {
         path: "posts/:id",

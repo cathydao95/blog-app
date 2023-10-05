@@ -1,6 +1,6 @@
 import db from "../db/db-connection.js";
 
-export const getAllPosts = async (req, res) => {
+export const getPosts = async (req, res) => {
   try {
     const { rows: posts } = await db.query(
       "SELECT * FROM posts ORDER BY created_at DESC"
@@ -16,7 +16,7 @@ export const getAllPosts = async (req, res) => {
   }
 };
 
-export const getSinglePost = async (req, res) => {
+export const getPost = async (req, res) => {
   try {
     const { id } = req.params;
 

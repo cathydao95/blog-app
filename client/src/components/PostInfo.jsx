@@ -4,7 +4,6 @@ import { getText } from "../utils";
 
 const PostInfo = ({ post }) => {
   const { id, title, img, content, author, created_at } = post;
-  console.log(post);
   return (
     <div className="post">
       <div className="imgContainer">

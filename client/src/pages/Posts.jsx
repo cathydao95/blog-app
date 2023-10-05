@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PostInfo from "../components/PostInfo";
 
-const Homepage = () => {
+const Posts = () => {
   const [posts, setPosts] = useState([]);
 
   const getPosts = async () => {
@@ -31,4 +31,4 @@ const Homepage = () => {
   );
 };
 
-export default Homepage;
+export default Posts;
