@@ -11,6 +11,7 @@ const Write = () => {
   const [title, setTitle] = useState(state?.title || "");
   const [value, setValue] = useState(state?.content || "");
   const [file, setFile] = useState(null);
+  const [errors, setErrors] = useState({});
 
   const uploadImage = async () => {
     try {
@@ -33,6 +34,23 @@ const Write = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const imgUrl = await uploadImage();
+
+    if (!title.trim()) {
+      setErrors((prevError) => ({
+        ...prevError,
+        "title": "Please enter a valid title",
+      }));
+    }
+    if (!value.trim()) {
+      setErrors((prevError) => ({
+        ...prevError,
+        "value": "Content cannot be empty",
+      }));
+    }
+    if (!title.trim() || !value.trim()) {
+      return;
+    }
+
     try {
       let response;
       state
@@ -74,11 +92,10 @@ const Write = () => {
       console.error(error);
     }
   };
-
-  console.log(value);
   return (
     <div className="createPost">
       <form className="form">
+        {errors.title && <div className="errors">{errors.title}</div>}
         <label htmlFor="titleInput">Post Title:</label>
         <input
           name="title"
@@ -89,6 +106,7 @@ const Write = () => {
           onChange={(e) => setTitle(e.target.value)}
           required
         />
+
         <div className="fileUpload">
           <label htmlFor="file">Upload Image</label>
           <input
@@ -97,6 +115,7 @@ const Write = () => {
             onChange={(e) => setFile(e.target.files[0])}
           />
         </div>
+        {errors.value && <div className="errors">{errors.value}</div>}
         <div className="textareaContainer">
           <ReactQuill
             className="textarea"
