@@ -1,4 +1,4 @@
-<<<<<<< i1
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
