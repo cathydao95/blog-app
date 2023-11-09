@@ -103,7 +103,10 @@ const Write = () => {
           type="text"
           placeholder="title"
           value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          onChange={(e) => {
+            setTitle(e.target.value);
+            setErrors({});
+          }}
           required
         />
 
